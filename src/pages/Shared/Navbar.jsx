@@ -76,8 +76,8 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="shadow-lg shadow-gray-400 bg-base-100 ">
-      <div className="navbar max-w-7xl mx-auto justify-between  sticky top-0 z-50 !py-1 ">
+    <div className="shadow-lg shadow-gray-400 bg-base-100 sticky top-0 z-50">
+      <div className="navbar max-w-7xl mx-auto justify-between   !py-1 ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">

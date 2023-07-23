@@ -5,6 +5,7 @@ import { toast } from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../Shared/SocialLogin";
 import useAuth from "../../hooks/useAuth";
+import ForgetPasswordModal from "../../components/Modal/ForgetPasswordModal";
 
 const Login = () => {
   const { login, setLoading } = useAuth();
@@ -12,6 +13,7 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false); // reset pass modal open
 
   const {
     register,
@@ -19,6 +21,10 @@ const Login = () => {
     handleSubmit,
   } = useForm(); //form submit using react-hook
 
+  //reset pass close modal
+  const closeModal = () => {
+    setIsOpen(false);
+  };
   //
   const onSubmit = (data) => {
     console.log(data);
@@ -34,7 +40,7 @@ const Login = () => {
       });
   };
 
-  const inputClassName = `block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-orange-500 focus:outline-none focus:ring-0 focus:border-orange-600 peer`;
+  const inputClassName = `block py-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-orange-500 focus:outline-none focus:ring-0 focus:border-orange-600 peer`;
 
   const labelClassName = `peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-orange-600 peer-focus:dark:text-sky-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`;
   return (
@@ -102,18 +108,24 @@ const Login = () => {
             )}
           </div>
 
-          <div className="flex items-center h-5">
-            <input
-              id="remember"
-              type="checkbox"
-              className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-orange-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-orange-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-            />
-            <label
-              htmlFor="remember"
-              className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Remember me{" "}
-            </label>
+          <div className="flex items-center justify-between  h-5">
+            <div className="flex items-center">
+              <input
+                id="remember"
+                type="checkbox"
+                className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-orange-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-orange-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+              />
+              <label
+                htmlFor="remember"
+                className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
+                Remember me{" "}
+              </label>
+            </div>
+
+            <p onClick={()=>setIsOpen(true)} className="link-hover cursor-pointer text-sm font-medium text-gray-700 hover:text-orange-400">
+              Forget Password?
+            </p>
           </div>
           <div className="mt-5">
             <button type="submit" className="button-primary">
@@ -131,6 +143,10 @@ const Login = () => {
           </p>
         </form>
       </div>
+      <ForgetPasswordModal
+        isOpen={isOpen}
+        closeModal={closeModal}
+      />
     </div>
   );
 };

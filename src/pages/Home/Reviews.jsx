@@ -10,7 +10,6 @@ import { Pagination } from "swiper/modules";
 import { Rating } from "@smastrom/react-rating";
 
 import "@smastrom/react-rating/style.css";
-import { FaRegStar, FaStar } from "react-icons/fa";
 import SectionTitle from "../../components/Title/SectionTitle";
 
 const Reviews = () => {

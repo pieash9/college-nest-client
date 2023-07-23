@@ -6,8 +6,8 @@ import { useState } from "react";
 import useFeedbackData from "../../hooks/useFeedbackData";
 
 const AppliedCollegeCard = ({ college, refetch }) => {
-  const [isOpen, setIsOpen] = useState(false); //modal open
   const { feedbacks } = useFeedbackData();
+  const [isOpen, setIsOpen] = useState(false); //modal open
   //close modal
   const closeModal = () => {
     setIsOpen(false);
@@ -15,7 +15,7 @@ const AppliedCollegeCard = ({ college, refetch }) => {
 
   const { createdAt, collegeImage, collegeName } = college;
   return (
-    <div className="border rounded-lg shadow-lg hover:shadow-2xl overflow-hidden group  ">
+    <div className="border bg-white rounded-lg shadow-lg hover:shadow-2xl overflow-hidden group  ">
       <img
         src={collegeImage}
         alt={collegeName}
@@ -53,7 +53,7 @@ const AppliedCollegeCard = ({ college, refetch }) => {
           className="button-secondary"
         >
           {feedbacks.find((feedback) => feedback.collegeId === college._id)
-            ? "Review Given"
+            ? "Review Provided"
             : "Add Review"}
         </button>
       </div>

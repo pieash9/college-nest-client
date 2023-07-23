@@ -40,7 +40,7 @@ const ResearchPaper = () => {
           {researchPapers.map((paper, index) => (
             <div
               key={index}
-              className="border border-gray-300 rounded-lg  p-4 relative h-56 shadow-md hover:shadow-2xl duration-500"
+              className="border border-gray-300 bg-white rounded-lg  p-4 relative h-56 shadow-md hover:shadow-2xl duration-500"
             >
               <h3 className="text-xl font-semibold mb-2 text-gray-700">
                 {paper.title}

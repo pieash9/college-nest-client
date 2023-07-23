@@ -15,7 +15,7 @@ const AdmissionCard = ({ college, refetch }) => {
   };
 
   return (
-    <div className="border rounded-lg shadow-md p-4 border-gray-300  hover:shadow-2xl duration-500">
+    <div className="border bg-white rounded-lg shadow-md p-4 border-gray-300  hover:shadow-2xl duration-500">
       <img
         src={collegeImage}
         alt={collegeName}

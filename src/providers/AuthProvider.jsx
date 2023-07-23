@@ -9,6 +9,7 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
@@ -40,12 +41,16 @@ const AuthProvider = ({ children }) => {
       photoURL: image,
     });
   };
-
+  // google signin
   const signInWithGoogle = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
+  //reset password
+  const resetPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
   //logout user
   const logout = () => {
     setLoading(true);
@@ -71,6 +76,7 @@ const AuthProvider = ({ children }) => {
     login,
     signInWithGoogle,
     updateUser,
+    resetPassword,
     logout,
   };
   return (

@@ -11,7 +11,7 @@ const PopularCollegeCard = ({ college }) => {
     sportsCategories,
   } = college;
   return (
-    <div className="border rounded-lg shadow-md  h-[530px] group overflow-hidden relative">
+    <div className="border bg-white rounded-lg shadow-md  h-[530px] group overflow-hidden relative">
       <img
         src={collegeImage}
         alt={collegeName}

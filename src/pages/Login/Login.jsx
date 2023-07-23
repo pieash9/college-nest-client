@@ -4,12 +4,10 @@ import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../Shared/SocialLogin";
-
-
-
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
-  //   const { login, loading, setLoading } = useAuth();
+  const { login, setLoading } = useAuth();
   const [show, setShow] = useState(false);
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -21,29 +19,26 @@ const Login = () => {
     handleSubmit,
   } = useForm(); //form submit using react-hook
 
-//   if (loading) {
-//     return <Loader />;
-//   }
+  //
   const onSubmit = (data) => {
     console.log(data);
-    // login(data.email, data.password)
-    //   .then((result) => {
-    //     console.log(result.user);
-    //     navigate(from, { replace: true });
-    //     toast.success("Login success");
-    //   })
-    //   .catch(() => {
-    //     setLoading(false);
-    //     toast.error("Please Provide Valid Information");
-    //   });
+    login(data.email, data.password)
+      .then((result) => {
+        toast.success("Login success");
+        console.log(result.user);
+        navigate(from, { replace: true });
+      })
+      .catch(() => {
+        setLoading(false);
+        toast.error("Please Provide Valid Information");
+      });
   };
 
-  const inputClassName = `block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer`;
+  const inputClassName = `block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-orange-500 focus:outline-none focus:ring-0 focus:border-orange-600 peer`;
 
-  const labelClassName = `peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-sky-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`;
+  const labelClassName = `peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-orange-600 peer-focus:dark:text-sky-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`;
   return (
     <div className=" my-20 md:w-1/2 mx-auto shadow-2xl">
-      
       <div className=" border p-4 rounded">
         <div className="px-5">
           <SocialLogin title={"Login with"} />
@@ -111,7 +106,7 @@ const Login = () => {
             <input
               id="remember"
               type="checkbox"
-              className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+              className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-orange-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-orange-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
             />
             <label
               htmlFor="remember"

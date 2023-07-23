@@ -8,6 +8,7 @@ import MyCollege from "../pages/MyCollege/MyCollege";
 import CollegeDetails from "../pages/Shared/CollegeDetails";
 import Login from "../pages/Login/Login";
 import Signup from "../pages/Signup/Signup";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/myCollege",
-        element: <MyCollege />,
+        element: (
+          <PrivateRoute>
+            <MyCollege />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/college/details/:id",

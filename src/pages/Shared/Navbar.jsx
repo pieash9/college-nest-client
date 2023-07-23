@@ -50,7 +50,7 @@ const Navbar = () => {
           data-tip={user?.displayName}
         >
           <div className="w-8 rounded-full">
-            <img src={user?.photoURL} />
+            <img src={user?.photoURL} className="object-top" />
           </div>
         </div>
       ) : (

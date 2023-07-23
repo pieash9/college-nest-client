@@ -4,6 +4,7 @@ import { RouterProvider } from "react-router-dom";
 import router from "./routes/Routes.jsx";
 import { QueryClient, QueryClientProvider } from "react-query";
 import AuthProvider from "./providers/AuthProvider";
+import { Toaster } from "react-hot-toast";
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -11,6 +12,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <div className=" bg-[#F5F5F5]">
       <AuthProvider>
         <RouterProvider router={router} />
+        <Toaster />
       </AuthProvider>
     </div>
   </QueryClientProvider>

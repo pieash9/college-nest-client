@@ -6,8 +6,10 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useState } from "react";
 import axios from "axios";
+import useAuth from "../../hooks/useAuth";
 
-const AdmissionModal = ({ isOpen, closeModal }) => {
+const AdmissionModal = ({ isOpen, closeModal, college, refetch }) => {
+  const { user } = useAuth();
   const [loading, setLoading] = useState(false);
   const image_hosting_token = import.meta.env.VITE_IBB_KEY;
   const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
@@ -32,31 +34,39 @@ const AdmissionModal = ({ isOpen, closeModal }) => {
         if (imgRes.success) {
           const imgUrl = imgRes.data.display_url;
 
-          const productData = {
+          const appliedData = {
+            collegeId: college._id,
+            collegeName: college.collegeName,
+            collegeImage: college.collegeImage,
+            collegeRating: college.collegeRating,
+            numberOfResearch: college.numberOfResearch,
             candidateName: data.candidateName,
-            subject: data.subject,
-            candidateEmail: data.candidateEmail,
-            phoneNumber: data.phoneNumber,
-            address: data.address,
-            dateOfBirth: data.dateOfBirth,
             image: imgUrl,
+            candidateEmail: data.candidateEmail,
+            subject: data.subject,
+            phoneNumber: data.phoneNumber,
+            dateOfBirth: data.dateOfBirth,
+            address: data.address,
             createdAt: new Date(),
           };
-          console.log(productData);
-          //   axios
-          //     .patch(`/products/${product._id}`, { ...productData })
-          //     .then((res) => {
-          //       if (res.data) {
-          //         setLoading(false);
-          //         reset();
-          //         refetch();
-          //         toast.success("Product Updated");
-          //       }
-          //     })
-          //     .catch(() => {
-          //       setLoading(false);
-          //       toast.error("Something went wrong");
-          //     });
+          console.log(appliedData);
+          axios
+            .post(`http://localhost:5000/appliedCollege`, {
+              ...appliedData,
+            })
+            .then((res) => {
+              if (res.data) {
+                setLoading(false);
+                reset();
+                refetch();
+                closeModal();
+                toast.success("Application submitted");
+              }
+            })
+            .catch(() => {
+              setLoading(false);
+              toast.error("Something went wrong");
+            });
         }
       });
   };
@@ -65,6 +75,26 @@ const AdmissionModal = ({ isOpen, closeModal }) => {
 
   //className for label
   const labelClassName = `peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-sky-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`;
+
+  // subject name
+  const subjectName = [
+    "Mechanical Engineering",
+    "Electrical Engineering",
+    "Civil Engineering",
+    "Computer Science Engineering",
+    "Chemical Engineering",
+    "Biomedical Engineering",
+    "Aerospace Engineering",
+    "Environmental Engineering",
+    "Industrial Engineering",
+    "Materials Engineering",
+    "Software Engineering",
+    "Electronics Engineering",
+    "Automotive Engineering",
+    "Petroleum Engineering",
+    "Robotics Engineering",
+    "Biotechnology Engineering",
+  ];
   return (
     <div>
       <Transition appear show={isOpen} as={Fragment}>
@@ -104,6 +134,7 @@ const AdmissionModal = ({ isOpen, closeModal }) => {
                   </div>
 
                   <div className="">
+                    {/* form  */}
                     <form
                       onSubmit={handleSubmit(onSubmit)}
                       autoComplete="off"
@@ -118,7 +149,7 @@ const AdmissionModal = ({ isOpen, closeModal }) => {
                               type="name"
                               id="candidateName"
                               className={inputClassName}
-                              //   defaultValue={product.name}
+                              defaultValue={user?.displayName}
                               placeholder=" "
                             />
 
@@ -136,23 +167,29 @@ const AdmissionModal = ({ isOpen, closeModal }) => {
                             )}
                           </div>
 
-                          <div className="relative z-0 w-full mb-6 group">
-                            <input
-                              {...register("subject", { required: true })}
-                              type="text"
+                          <div className="relative z-0 w-full mb-6 group flex border-b-2 pb-1 border-gray-300">
+                            <select
                               id="subject"
-                              className={inputClassName}
-                              //   defaultValue={product.price}
-                              placeholder=" "
-                            />
-
+                              className="select focus:outline-none border text-gray-700 font-normal border-gray-300 select-sm w-full mt-3 border-b-2"
+                              {...register("subject", { required: true })}
+                            >
+                              {subjectName.map((subject, i) => (
+                                <option
+                                  key={i}
+                                  value={subject}
+                                  className="capitalize text-gray-700"
+                                >
+                                  {subject}
+                                </option>
+                              ))}
+                            </select>
                             <label htmlFor="subject" className={labelClassName}>
-                              Subject name{" "}
+                              Select subject{" "}
                               <span className="text-red-500">*</span>
                             </label>
                             {errors.subject && (
                               <span className="text-red-500 text-sm">
-                                Subject name is required
+                                Subject is required
                               </span>
                             )}
                           </div>
@@ -168,7 +205,7 @@ const AdmissionModal = ({ isOpen, closeModal }) => {
                               type="email"
                               id="candidateEmail"
                               className={inputClassName}
-                              //   defaultValue={product.name}
+                              defaultValue={user?.email}
                               placeholder=" "
                             />
 

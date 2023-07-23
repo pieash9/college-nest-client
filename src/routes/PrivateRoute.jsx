@@ -8,11 +8,11 @@ import Loader from "../components/Loader/Loader";
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const location = useLocation();
-  if (user) {
-    return children;
-  }
   if (loading) {
     return <Loader />;
+  }
+  if (user) {
+    return children;
   }
   toast.error("Login First");
   return <Navigate to={"/login"} state={{ from: location }} replace></Navigate>;

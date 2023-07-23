@@ -11,7 +11,7 @@ const useCollegesData = () => {
     return res.data;
   });
 
-  return { colleges, refetch, isLoading };
+  return { colleges, isLoading, refetch };
 };
 
 export default useCollegesData;

@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import AdmissionModal from "../Modal/AdmissionModal";
+import useAppliedCollegeData from "../../hooks/useAppliedCollegeData";
 
-const AdmissionCard = ({ college }) => {
+const AdmissionCard = ({ college, refetch }) => {
   const { collegeName, collegeImage, admissionDate } = college;
   const [isOpen, setIsOpen] = useState(false); //modal open
 
+  const { appliedColleges } = useAppliedCollegeData();
   //close modal
   const closeModal = () => {
     setIsOpen(false);
@@ -32,14 +34,27 @@ const AdmissionCard = ({ college }) => {
           year: "numeric",
         })}
       </p>
-      <button onClick={() => setIsOpen(true)} className="button-secondary">
-        Apply Now
+
+      <button
+        disabled={appliedColleges.find(
+          (singleAppliedCollege) =>
+            singleAppliedCollege.collegeId === college._id
+        )}
+        onClick={() => setIsOpen(true)}
+        className="button-secondary"
+      >
+        {appliedColleges.find(
+          (singleAppliedCollege) =>
+            singleAppliedCollege.collegeId === college._id
+        )
+          ? "Already Applied"
+          : "Apply Now"}
       </button>
       <AdmissionModal
         isOpen={isOpen}
         closeModal={closeModal}
         college={college}
-        // refetch={refetch}
+        refetch={refetch}
       />
     </div>
   );

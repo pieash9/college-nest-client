@@ -4,7 +4,7 @@ import SectionTitle from "../../components/Title/SectionTitle";
 import useCollegesData from "../../hooks/useCollegesData";
 
 const Admission = () => {
-  const { colleges, isLoading } = useCollegesData();
+  const { colleges, isLoading, refetch } = useCollegesData();
   if (isLoading) {
     return <Loader />;
   }
@@ -16,10 +16,14 @@ const Admission = () => {
         subTitle={"Unlock Your Potential: Begin Your Journey Today"}
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 mt-10 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 mt-10 gap-5">
         {colleges.length > 0 &&
           colleges.map((college) => (
-            <AdmissionCard key={college._id} college={college} />
+            <AdmissionCard
+              key={college._id}
+              college={college}
+              refetch={refetch}
+            />
           ))}
       </div>
     </div>

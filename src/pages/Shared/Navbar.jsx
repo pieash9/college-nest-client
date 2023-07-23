@@ -1,8 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import { FaRegUserCircle } from "react-icons/fa";
 import logo from "../../assets/logo.png";
+import useAuth from "../../hooks/useAuth";
 const Navbar = () => {
-  const user = true;
+  const { user, logout } = useAuth();
   const navLinkClassName = ({ isActive }) =>
     isActive
       ? "text-orange-500 font-medium  bg-gray-700  border-b-2 border-orange-500 duration-200"
@@ -60,7 +61,7 @@ const Navbar = () => {
         <NavLink
           className="text-gray-600 hover:bg-gray-700 hover:text-orange-500  py-2 rounded-md font-medium "
           style={{ backgroundColor: "transparent" }}
-          //   onClick={logout}
+          onClick={logout}
         >
           Logout
         </NavLink>

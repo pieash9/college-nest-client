@@ -1,9 +1,17 @@
 /* eslint-disable react/prop-types */
 
-
+import { useState } from "react";
+import AdmissionModal from "../Modal/AdmissionModal";
 
 const AdmissionCard = ({ college }) => {
   const { collegeName, collegeImage, admissionDate } = college;
+  const [isOpen, setIsOpen] = useState(false); //modal open
+
+  //close modal
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div className="border rounded-lg shadow-md p-4 border-gray-300  hover:shadow-2xl duration-500">
       <img
@@ -14,7 +22,7 @@ const AdmissionCard = ({ college }) => {
       <h3 className="text-xl font-semibold mb-2 text-gray-700">
         {collegeName}
       </h3>
-      
+
       <p className="text-gray-500 mb-2">
         <span className="text-gray-600 font-medium">Admission Date: </span>{" "}
         {new Date(admissionDate).toLocaleDateString("en-US", {
@@ -24,7 +32,15 @@ const AdmissionCard = ({ college }) => {
           year: "numeric",
         })}
       </p>
-      <button className="button-secondary">Apply Now</button>
+      <button onClick={() => setIsOpen(true)} className="button-secondary">
+        Apply Now
+      </button>
+      <AdmissionModal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        college={college}
+        // refetch={refetch}
+      />
     </div>
   );
 };

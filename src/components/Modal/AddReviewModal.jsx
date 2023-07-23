@@ -9,7 +9,7 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 
-const AddReviewModal = ({ isOpen, closeModal, refetch }) => {
+const AddReviewModal = ({ isOpen, closeModal, refetch, college }) => {
   const { user } = useAuth();
   const [loading, setLoading] = useState(false);
   const [rating, setRating] = useState(0);
@@ -32,6 +32,9 @@ const AddReviewModal = ({ isOpen, closeModal, refetch }) => {
       candidateName: user.displayName,
       candidateImage: user.photoURL,
       candidateEmail: user.email,
+      collegeName: college.collegeName,
+      collegeId: college._id,
+      collegeImage: college.collegeImage,
       createdAt: new Date(),
     };
     console.log(feedback);

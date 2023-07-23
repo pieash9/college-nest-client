@@ -3,9 +3,11 @@
 import { FaStar } from "react-icons/fa";
 import AddReviewModal from "../Modal/AddReviewModal";
 import { useState } from "react";
+import useFeedbackData from "../../hooks/useFeedbackData";
 
 const AppliedCollegeCard = ({ college, refetch }) => {
   const [isOpen, setIsOpen] = useState(false); //modal open
+  const { feedbacks } = useFeedbackData();
   //close modal
   const closeModal = () => {
     setIsOpen(false);
@@ -42,8 +44,17 @@ const AppliedCollegeCard = ({ college, refetch }) => {
             year: "numeric",
           })}
         </p>
-        <button onClick={() => setIsOpen(true)} className="button-secondary">
-          Add a Review
+
+        <button
+          disabled={feedbacks.find(
+            (feedback) => feedback.collegeId === college._id
+          )}
+          onClick={() => setIsOpen(true)}
+          className="button-secondary"
+        >
+          {feedbacks.find((feedback) => feedback.collegeId === college._id)
+            ? "Review Given"
+            : "Add Review"}
         </button>
       </div>
       <AddReviewModal

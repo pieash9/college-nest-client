@@ -17,7 +17,7 @@ const PopularColleges = () => {
         subTitle={"Transforming Futures: Where Dreams Take Flight!"}
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 mt-10 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 mt-10 gap-10 border-gray-300">
         {colleges.length > 0 &&
           colleges
             .slice(0, 3)

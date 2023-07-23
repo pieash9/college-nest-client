@@ -41,10 +41,10 @@ const PopularCollegeCard = ({ college }) => {
             <span key={i}> {sport},</span>
           ))}
         </p>
-        <div className=" mt-2 absolute bottom-4 right-4 ">
+        <div className=" mt-2 absolute bottom-4 right-4 w-full">
           {" "}
           <Link to={`/college/details/${_id}`}>
-            <button className="button-primary">Details</button>
+            <button className="button-primary w-full">Details</button>
           </Link>
         </div>
       </div>

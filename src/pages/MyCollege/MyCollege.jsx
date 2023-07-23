@@ -17,10 +17,14 @@ const MyCollege = () => {
         Ltitle={"Colleges"}
         subTitle={"List of colleges to which you have applied"}
       />
-      <div className="gird grid-cols-1 md:grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10">
         {appliedColleges.length > 0 &&
           appliedColleges.map((college) => (
-            <AppliedCollegeCard key={college._id} college={college} />
+            <AppliedCollegeCard
+              key={college._id}
+              college={college}
+              refetch={refetch}
+            />
           ))}
       </div>
     </div>

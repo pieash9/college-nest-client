@@ -6,9 +6,9 @@ import useAppliedCollegeData from "../../hooks/useAppliedCollegeData";
 
 const AdmissionCard = ({ college, refetch }) => {
   const { collegeName, collegeImage, admissionDate } = college;
-  const [isOpen, setIsOpen] = useState(false); //modal open
-
+  
   const { appliedColleges } = useAppliedCollegeData();
+  const [isOpen, setIsOpen] = useState(false); //modal open
   //close modal
   const closeModal = () => {
     setIsOpen(false);

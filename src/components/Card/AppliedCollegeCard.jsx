@@ -42,7 +42,9 @@ const AppliedCollegeCard = ({ college, refetch }) => {
             year: "numeric",
           })}
         </p>
-        <button className="button-secondary">Add a Review</button>
+        <button onClick={() => setIsOpen(true)} className="button-secondary">
+          Add a Review
+        </button>
       </div>
       <AddReviewModal
         isOpen={isOpen}

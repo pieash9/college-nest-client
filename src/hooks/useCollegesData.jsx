@@ -8,7 +8,7 @@ const useCollegesData = () => {
     isLoading,
   } = useQuery("colleges", async () => {
     const res = await axios.get(`http://localhost:5000/colleges`);
-    return res.data;
+    return res?.data;
   });
 
   return { colleges, isLoading, refetch };

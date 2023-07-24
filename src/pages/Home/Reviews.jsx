@@ -33,8 +33,8 @@ const Reviews = () => {
       >
         {feedbacks.length > 0 &&
           feedbacks.slice(0, 9).map((feedback) => (
-            <div key={feedback._id}>
-              <SwiperSlide>
+            <div key={feedback._id} >
+              <SwiperSlide className="shadow-md hover:shadow-2xl border border-gray-200">
                 <div className=" text-start grid grid-cols-[1fr,6fr] h-64  gap-4 p-5">
                   <div className="w-20 h-20 flex justify-center items-center">
                     <img

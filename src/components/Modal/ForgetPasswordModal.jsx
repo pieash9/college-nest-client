@@ -23,10 +23,10 @@ const ForgetPasswordModal = ({ isOpen, closeModal }) => {
         reset();
         closeModal();
         setLoading(false);
-        toast.success("Please check your email for reset password");
+        toast.success("Please check your email to reset password");
       })
       .catch(() => {
-        toast.error("Provide valid email");
+        toast.error("User not found!");
         setLoading(false);
       });
   };
@@ -113,7 +113,7 @@ const ForgetPasswordModal = ({ isOpen, closeModal }) => {
                             >
                               <span>
                                 {" "}
-                                {loading ? "Check your email" : "Reset"}{" "}
+                                {loading ? "Sending email..." : "Reset"}{" "}
                               </span>
                               {loading && (
                                 <span className="loading loading-spinner loading-sm ml-2"></span>

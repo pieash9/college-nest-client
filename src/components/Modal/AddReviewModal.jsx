@@ -43,7 +43,7 @@ const AddReviewModal = ({ isOpen, closeModal, refetch, college }) => {
       .then((res) => {
         if (res.data.insertedId) {
           reset();
-          refetch();
+          refetch({ force: true });
           setLoading(false);
           closeModal();
           toast.success("Feedback provided");

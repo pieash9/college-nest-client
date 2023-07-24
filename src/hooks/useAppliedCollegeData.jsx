@@ -12,7 +12,12 @@ const useAppliedCollegeData = () => {
     const res = await axios.get(
       `http://localhost:5000/appliedCollege/${user?.email}`
     );
-    return res.data;
+    return res?.data;
+  }, {
+    // Set the refetchOnMount option to false to prevent initial automatic fetch
+    refetchOnMount: false,
+    // Add user?.email as a dependency to trigger fetch when it changes
+    enabled: !!user?.email,
   });
 
   return { appliedColleges, refetch, isLoading };

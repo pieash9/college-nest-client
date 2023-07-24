@@ -9,6 +9,7 @@ import CollegeDetails from "../pages/Shared/CollegeDetails";
 import Login from "../pages/Login/Login";
 import Signup from "../pages/Signup/Signup";
 import PrivateRoute from "./PrivateRoute";
+import Profile from "../pages/Profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/admission",
         element: <Admission />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
       {
         path: "/myCollege",

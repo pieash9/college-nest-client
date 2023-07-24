@@ -58,7 +58,7 @@ const AdmissionModal = ({ isOpen, closeModal, college, refetch }) => {
               if (res.data) {
                 setLoading(false);
                 reset();
-                refetch();
+                refetch({ force: true });
                 closeModal();
                 toast.success("Application submitted");
               }
@@ -162,7 +162,7 @@ const AdmissionModal = ({ isOpen, closeModal, college, refetch }) => {
                             </label>
                             {errors.candidateName && (
                               <span className="text-red-500 text-sm">
-                                Product name is required
+                                Name is required
                               </span>
                             )}
                           </div>

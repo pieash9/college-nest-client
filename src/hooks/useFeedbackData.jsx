@@ -8,7 +8,7 @@ const useFeedbackData = () => {
     isLoading,
   } = useQuery(["feedback"], async () => {
     const res = await axios.get(`http://localhost:5000/feedback`);
-    return res.data;
+    return res?.data;
   });
 
   return { feedbacks, refetch, isLoading };

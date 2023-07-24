@@ -2,8 +2,10 @@ import { Link, NavLink } from "react-router-dom";
 import { FaRegUserCircle } from "react-icons/fa";
 import logo from "../../assets/logo.png";
 import useAuth from "../../hooks/useAuth";
+import useUsersData from "../../hooks/useUsersData";
 const Navbar = () => {
   const { user, logout } = useAuth();
+  const { userData } = useUsersData();
   const navLinkClassName = ({ isActive }) =>
     isActive
       ? "text-orange-500 font-medium  bg-gray-700  border-b-2 border-orange-500 duration-200"
@@ -44,15 +46,17 @@ const Navbar = () => {
   // nav image and login logout
   const navImageLogout = (
     <>
-      {user?.photoURL ? (
-        <div
-          className="avatar tooltip tooltip-bottom "
-          data-tip={user?.displayName}
-        >
-          <div className="w-8 rounded-full">
-            <img src={user?.photoURL} className="object-top" />
+      {userData?.image ? (
+        <Link to="/profile">
+          <div
+            className="avatar tooltip tooltip-bottom border-orange-400 border rounded-full"
+            data-tip={userData?.name}
+          >
+            <div className="w-8 rounded-full">
+              <img src={userData?.image} className="object-top" />
+            </div>
           </div>
-        </div>
+        </Link>
       ) : (
         <FaRegUserCircle className="text-gray-700" size={24} />
       )}

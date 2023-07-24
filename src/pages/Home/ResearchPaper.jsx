@@ -37,9 +37,9 @@ const ResearchPaper = () => {
           subTitle={"Exploring New Frontiers: Unveiling the Path of Knowledge"}
         />
         <div className="grid grid-cols-3 gap-5 mt-10">
-          {researchPapers.map((paper, index) => (
+          {researchPapers.map((paper, i) => (
             <div
-              key={index}
+              key={i}
               className="border border-gray-300 bg-white rounded-lg  p-4 relative h-56 shadow-md hover:shadow-2xl duration-500"
             >
               <h3 className="text-xl font-semibold mb-2 text-gray-700">
@@ -55,11 +55,7 @@ const ResearchPaper = () => {
                 </span>
                 {paper.journal}, {paper.year}
               </p>
-              <a
-                href={"#"}
-                className="button-secondary absolute bottom-5"
-                r
-              >
+              <a href={"#"} className="button-secondary absolute bottom-5" r>
                 Read Paper
               </a>
             </div>

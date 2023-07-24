@@ -3,16 +3,20 @@ import CollegesGallery from "./CollegesGallery";
 import PopularColleges from "./PopularColleges";
 import ResearchPaper from "./ResearchPaper";
 import Reviews from "./Reviews";
+import Search from "./Search";
 
 const Home = () => {
   return (
-    <div className="space-y-20 mb-20">
-      <Banner />
-      <PopularColleges />
-      <CollegesGallery />
-      <ResearchPaper />
-      <Reviews />
-    </div>
+    <>
+      <Search />
+      <div className="space-y-20 mb-20">
+        <Banner />
+        <PopularColleges />
+        <CollegesGallery />
+        <ResearchPaper />
+        <Reviews />
+      </div>
+    </>
   );
 };
 

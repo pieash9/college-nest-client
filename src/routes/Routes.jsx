@@ -57,7 +57,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/colleges/${params.id}`),
+          fetch(`https://college-nest-server.vercel.app/colleges/${params.id}`),
       },
     ],
   },

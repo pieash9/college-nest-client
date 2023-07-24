@@ -7,7 +7,9 @@ const useCollegesData = () => {
     refetch,
     isLoading,
   } = useQuery("colleges", async () => {
-    const res = await axios.get(`http://localhost:5000/colleges`);
+    const res = await axios.get(
+      `https://college-nest-server.vercel.app/colleges`
+    );
     return res?.data;
   });
 

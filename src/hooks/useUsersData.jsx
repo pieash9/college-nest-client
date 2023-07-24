@@ -11,7 +11,9 @@ const useUsersData = () => {
   } = useQuery(
     ["userData", user?.email],
     async () => {
-      const res = await axios.get(`http://localhost:5000/users/${user?.email}`);
+      const res = await axios.get(
+        `https://college-nest-server.vercel.app/users/${user?.email}`
+      );
       return res?.data;
     },
     {

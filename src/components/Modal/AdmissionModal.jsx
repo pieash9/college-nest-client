@@ -51,7 +51,7 @@ const AdmissionModal = ({ isOpen, closeModal, college, refetch }) => {
           };
           console.log(appliedData);
           axios
-            .post(`http://localhost:5000/appliedCollege`, {
+            .post(`https://college-nest-server.vercel.app/appliedCollege`, {
               ...appliedData,
             })
             .then((res) => {
@@ -122,7 +122,7 @@ const AdmissionModal = ({ isOpen, closeModal, college, refetch }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-5xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-xs md:max-w-5xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <div className="absolute right-4 top-4">
                     <button
                       type="button"

@@ -11,7 +11,7 @@ const CollegeCard = ({ college }) => {
   return (
     <div
       className={`border bg-white rounded-lg shadow-lg border-gray-300 hover:shadow-2xl duration-500 p-4  ${
-        showDetails ? "h-auto" : "h-[430px]"
+        showDetails ? "h-auto" : "h-[435px]"
       }`}
     >
       <img

@@ -28,7 +28,9 @@ const EditProfileModal = ({ isOpen, closeModal }) => {
       university: data.university,
     };
     axios
-      .patch(`http://localhost:5000/users/${user?.email}`, { ...updateData })
+      .patch(`https://college-nest-server.vercel.app/users/${user?.email}`, {
+        ...updateData,
+      })
       .then((res) => {
         if (res.data.modifiedCount) {
           toast.success("Profile updated");

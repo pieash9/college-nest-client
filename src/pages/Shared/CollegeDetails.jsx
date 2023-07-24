@@ -13,10 +13,10 @@ const CollegeDetails = () => {
   } = college;
 
   return (
-    <div className=" py-8">
+    <div className=" py-8 mx-3 lg:mx-0">
       <SectionTitle Ftitle={"Admission Details of"} Ltitle={collegeName} />
-      <div className="flex gap-10 bg-white mt-10">
-        <div className="md:w-2/5">
+      <div className="lg:flex gap-10 bg-white mt-10">
+        <div className="lg:w-2/5">
           <img
             src={collegeImage}
             alt={collegeName}
@@ -31,7 +31,7 @@ const CollegeDetails = () => {
             <span className="text-orange-500"> {admissionDate}</span>
           </p>
         </div>
-        <div className="md:w-3/5 space-y-3">
+        <div className="lg:w-3/5 space-y-3">
           <h3 className="text-xl font-semibold text-gray-700 mb-2 underline">
             Admission Process:
           </h3>

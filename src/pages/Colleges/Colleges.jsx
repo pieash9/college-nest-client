@@ -10,13 +10,13 @@ const Colleges = () => {
   }
 
   return (
-    <div className="mb-10 mt-5">
+    <div className="mb-10 mt-5 mx-3 lg:mx-0">
       <SectionTitle
         Ftitle={"Pursuing Excellence: "}
         Ltitle={"Discover the Best Colleges"}
         subTitle={"Unveiling the Future: Colleges of Excellence"}
       />
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
         {colleges.length > 0 &&
           colleges.map((college) => (
             <CollegeCard key={college._id} college={college} />

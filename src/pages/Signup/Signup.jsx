@@ -50,27 +50,27 @@ const Signup = () => {
           };
           console.log(userData);
 
-        //   create user using email,password
-            createUser(data.email, data.password)
-              .then(() => {
-                updateUser(data.name, imgUrl).then(() => {
-                  logout()
-                    .then(() => {
-                      axios
-                        .post(`http://localhost:5000/users`, {
-                          ...userData,
-                        })
-                        .then((res) => {
-                          console.log(res.data);
-                          navigate("/login");
-                          toast.success("Sign Up Completed. Login Now!");
-                        })
-                        .catch((err) => console.log(err));
-                    })
-                    .catch(() => toast.error("Something went wrong"));
-                });
-              })
-              .catch(() => toast.error("Please provide valid information"));
+          //   create user using email,password
+          createUser(data.email, data.password)
+            .then(() => {
+              updateUser(data.name, imgUrl).then(() => {
+                logout()
+                  .then(() => {
+                    axios
+                      .post(`https://college-nest-server.vercel.app/users`, {
+                        ...userData,
+                      })
+                      .then((res) => {
+                        console.log(res.data);
+                        navigate("/login");
+                        toast.success("Sign Up Completed. Login Now!");
+                      })
+                      .catch((err) => console.log(err));
+                  })
+                  .catch(() => toast.error("Something went wrong"));
+              });
+            })
+            .catch(() => toast.error("Please provide valid information"));
         }
       });
   };
@@ -79,9 +79,11 @@ const Signup = () => {
 
   const labelClassName = `peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-orange-600 peer-focus:dark:text-sky-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`;
   return (
-    <div className=" my-20  md:w-1/2 mx-auto shadow-2xl">
+    <div className=" my-10 md:my-16 lg:my-20 md:w-3/4 lg:w-1/2 mx-auto shadow-2xl">
       <form onSubmit={handleSubmit(onSubmit)} className=" border p-4 rounded">
-        <h2 className="text-gray-800 font-semibold text-3xl mb-5 text-center">Sign Up</h2>
+        <h2 className="text-gray-800 font-semibold text-3xl mb-5 text-center">
+          Sign Up
+        </h2>
         <div className="bg-base-100 rounded p-5">
           {/* Name */}
           <div className="relative z-0 w-full mb-6 group">

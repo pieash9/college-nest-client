@@ -29,18 +29,18 @@ const ResearchPaper = () => {
   ];
 
   return (
-    <div>
+    <div className="lg:px-0 px-3">
       <div className="container mx-auto py-8">
         <SectionTitle
           Ftitle={"Recommended "}
           Ltitle={"Research Papers"}
           subTitle={"Exploring New Frontiers: Unveiling the Path of Knowledge"}
         />
-        <div className="grid grid-cols-3 gap-5 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10">
           {researchPapers.map((paper, i) => (
             <div
               key={i}
-              className="border border-gray-300 bg-white rounded-lg  p-4 relative h-56 shadow-md hover:shadow-2xl duration-500"
+              className="border border-gray-300 bg-white rounded-lg  p-4 shadow-md hover:shadow-2xl duration-500"
             >
               <h3 className="text-xl font-semibold mb-2 text-gray-700">
                 {paper.title}
@@ -55,7 +55,7 @@ const ResearchPaper = () => {
                 </span>
                 {paper.journal}, {paper.year}
               </p>
-              <a href={"#"} className="button-secondary absolute bottom-5" r>
+              <a href={"#"} className="button-secondary">
                 Read Paper
               </a>
             </div>

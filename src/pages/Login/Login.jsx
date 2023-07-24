@@ -44,7 +44,7 @@ const Login = () => {
 
   const labelClassName = `peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-orange-600 peer-focus:dark:text-sky-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`;
   return (
-    <div className=" my-20 md:w-1/2 mx-auto shadow-2xl">
+    <div className=" my-10 md:my-16 lg:my-20 md:w-3/4 lg:w-1/2 mx-auto shadow-2xl">
       <div className=" border p-4 rounded">
         <div className="px-5">
           <SocialLogin title={"Login with"} />

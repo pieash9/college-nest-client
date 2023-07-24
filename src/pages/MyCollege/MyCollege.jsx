@@ -11,13 +11,13 @@ const MyCollege = () => {
     return <Loader />;
   }
   return (
-    <div className="mb-10 mt-5">
+    <div className="mb-10 mt-5 mx-3 lg:mx-0">
       <SectionTitle
         Ftitle={"Applied"}
         Ltitle={"Colleges"}
         subTitle={"List of colleges to which you have applied"}
       />
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
         {appliedColleges.length > 0 &&
           appliedColleges.map((college) => (
             <AppliedCollegeCard

@@ -34,7 +34,7 @@ const CollegesGallery = () => {
     },
   ];
   return (
-    <div>
+    <div className="lg:px-0 px-3">
       <SectionTitle
         Ftitle={"Colleges"}
         Ltitle={"Gallery"}

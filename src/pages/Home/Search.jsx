@@ -13,7 +13,9 @@ const Search = () => {
     setHideSearchData(true);
     setLoading(true);
     axios
-      .get(`http://localhost:5000/colleges/search?collegeName=${data.search}`)
+      .get(
+        `https://college-nest-server.vercel.app/colleges/search?collegeName=${data.search}`
+      )
       .then((res) => {
         setSearchData(res?.data);
         setLoading(false);
@@ -22,15 +24,10 @@ const Search = () => {
         console.log(err);
       });
   };
+
   return (
     <>
-      <div
-        onClick={() => setHideSearchData(false)}
-        className="h-screen w-full left-0 z-[10] right-0 absolute"
-      >
-        {" "}
-      </div>
-      <div className="bg-[#002147] relative z-20">
+      <div className="bg-[#002147] relative z-20 p-3 md:p-0">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="md:w-1/2  mx-auto py-3"
@@ -102,7 +99,7 @@ const Search = () => {
             </div>
           )}
           {searchData.length > 0 && (
-            <div className=" grid grid-cols-1 lg:grid-cols-2 gap-5 ">
+            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 ">
               {searchData.length > 0 &&
                 searchData.map((college) => (
                   <PopularCollegeCard key={college._ida} college={college} />

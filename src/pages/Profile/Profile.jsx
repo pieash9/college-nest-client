@@ -15,7 +15,7 @@ const Profile = () => {
     return <Loader />;
   }
   return (
-    <div className="mt-5 mb-10">
+    <div className="mt-5 mb-10 mx-3 lg:mx-0">
       <SectionTitle
         Ftitle={"Your"}
         Ltitle={"Profile"}
@@ -32,7 +32,7 @@ const Profile = () => {
             Welcome, {userData.name}
           </h3>
         </div>
-        <div className="mt-10 mx-auto p-5 border shadow-md hover:shadow-xl border-gray-300 rounded md:w-1/2 relative">
+        <div className="mt-10 mx-auto p-5 border shadow-md hover:shadow-xl border-gray-300 rounded lg:w-1/2 md:w-3/4 relative">
           <div
             className="tooltip tooltip-bottom absolute right-4 top-4 "
             data-tip="Edit"

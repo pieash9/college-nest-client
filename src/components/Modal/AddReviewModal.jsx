@@ -39,7 +39,7 @@ const AddReviewModal = ({ isOpen, closeModal, refetch, college }) => {
     };
     console.log(feedback);
     axios
-      .post(`http://localhost:5000/feedback`, { ...feedback })
+      .post(`https://college-nest-server.vercel.app/feedback`, { ...feedback })
       .then((res) => {
         if (res.data.insertedId) {
           reset();
@@ -99,7 +99,7 @@ const AddReviewModal = ({ isOpen, closeModal, refetch, college }) => {
                     <form
                       onSubmit={handleSubmit(onSubmit)}
                       autoComplete="off"
-                      className=" border p-4 rounded border-gray-300"
+                      className=" border md:p-4 rounded border-gray-300"
                     >
                       <div className="bg-base-100 rounded p-5">
                         {/* Rating &  feedback*/}

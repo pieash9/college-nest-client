@@ -6,8 +6,10 @@ const useFeedbackData = () => {
     data: feedbacks = [],
     refetch,
     isLoading,
-  } = useQuery(["feedback"], async () => {
-    const res = await axios.get(`http://localhost:5000/feedback`);
+  } = useQuery("feedback", async () => {
+    const res = await axios.get(
+      `https://college-nest-server.vercel.app/feedback`
+    );
     return res?.data;
   });
 

@@ -24,15 +24,15 @@ const SocialLogin = ({ title }) => {
           role: "user",
           createdAt: new Date(),
         };
-            axios
-              .post(`http://localhost:5000/users`, {
-                ...userData,
-              })
-              .then(() => {
-                toast.success("Login success");
-                navigate(from, { replace: true });
-              })
-              .catch(() => toast.error("Something went wrong!"));
+        axios
+          .post(`https://college-nest-server.vercel.app/users`, {
+            ...userData,
+          })
+          .then(() => {
+            toast.success("Login success");
+            navigate(from, { replace: true });
+          })
+          .catch(() => toast.error("Something went wrong!"));
       })
       .catch((error) => {
         console.log(error);

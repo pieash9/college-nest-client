@@ -11,7 +11,7 @@ const PopularCollegeCard = ({ college }) => {
     sportsCategories,
   } = college;
   return (
-    <div className="border bg-white rounded-lg shadow-md hover:shadow-2xl  h-[530px] group overflow-hidden relative">
+    <div className="border bg-white rounded-lg shadow-md hover:shadow-2xl  group overflow-hidden relative">
       <img
         src={collegeImage}
         alt={collegeName}
@@ -41,7 +41,7 @@ const PopularCollegeCard = ({ college }) => {
             <span key={i}> {sport},</span>
           ))}
         </p>
-        <div className=" mt-2 absolute bottom-4 right-4 left-4 ">
+        <div className=" my-3">
           {" "}
           <Link to={`/college/details/${_id}`}>
             <button className="button-primary w-full">Details</button>

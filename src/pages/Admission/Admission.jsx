@@ -9,7 +9,7 @@ const Admission = () => {
     return <Loader />;
   }
   return (
-    <div className="mb-10 mt-5">
+    <div className="mb-10 mt-5 mx-3 lg:mx-0">
       <SectionTitle
         Ftitle={"Admission"}
         Ltitle={"Details"}
